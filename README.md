@@ -17,7 +17,9 @@ nano Password.txt
 hydra -l badguy -P ~/Password.txt -t 1 ssh://192.168.89.130
 ```
 
-[![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/e6eb0b6ed41df5fafc313be2038319047fe4f16e/hydra%20installation.png)
+![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/e6eb0b6ed41df5fafc313be2038319047fe4f16e/hydra%20installation.png)
+
+
 
 Confirmed the attacker VM could reach the target and that the Hydra tool installed cleanly.
 
