@@ -75,7 +75,7 @@ rule.groups:authentication_failed
 
 **12 hits**, all generated within the attack window and all tied to the target agent.
 
-[![image alt](screenshots/05-wazuh-discover-12hits.png)](screenshots/05-wazuh-discover-12hits.png)
+[![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/dcff5c7381df945f37d1c2e8e05c9df95749b35f/brute%20force%20sshd%20login%20details.png)
 
 ---
 
