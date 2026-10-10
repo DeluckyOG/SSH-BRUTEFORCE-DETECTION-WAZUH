@@ -59,7 +59,7 @@ sudo grep -iE 'Failed password|authentication failure|Invalid user' /var/log/aut
 
 The raw `auth.log` entries (`Invalid user badguy`, `Failed password for invalid user badguy`, `PAM 2 more authentication failures`) matched the Hydra run exactly, confirming the attack actually reached the target and was logged locally before I went looking for it in Wazuh.
 
-[![image alt](screenshots/04-hydra-attack-authlog.png)](screenshots/04-hydra-attack-authlog.png)
+[![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/c72309f7c8fd9151b492e6dc6d9f1e61df18d502/brute%20force%20authentication%20failure.png)
 
 ---
 
