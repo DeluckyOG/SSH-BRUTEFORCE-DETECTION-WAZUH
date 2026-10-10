@@ -93,7 +93,7 @@ I opened a single alert to confirm the fields matched the attack exactly:
 
 I highlighted the key correlation fields — agent name, source IP, and source user — to make the pivot points clear.
 
-[![image alt](screenshots/07-alert-detail-highlighted.png)](screenshots/07-alert-detail-highlighted.png)
+[![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/445ae0099bdd8a851971c6b2be59f5c8e529ea4c/Document%20brute%20Force%20login.png)
 
 Finally, I checked the raw JSON of the alert document to confirm the full event structure Wazuh stored, including `rule.hipaa` and `rule.pci_dss` compliance tags attached automatically to this rule.
 
