@@ -31,7 +31,7 @@ Confirmed the attacker VM could reach the target and that the Hydra tool install
 
 I confirmed the SSH service was active on the target and captured a baseline of `/var/log/auth.log` before the attack, so any new entries could be clearly attributed to the simulation.
 
-[![image alt](screenshots/02-ssh-status-baseline.png)](screenshots/02-ssh-status-baseline.png)
+[![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/93b04520d7734415d97dbbf49fe0517262ab3091/ssh%20confirmation%20in%20linux.png)
 
 ---
 
