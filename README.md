@@ -89,7 +89,7 @@ I opened a single alert to confirm the fields matched the attack exactly:
 - **Timestamp:** `2026-10-10T19:36:02.473Z`
 - **Raw log:** `Oct 10 19:36:01 ubuntu sshd[4539]: Failed password for invalid user badguy from 192.168.89.130 port 60078 ssh2`
 
-[![image alt](screenshots/06-alert-detail.png)](screenshots/06-alert-detail.png)
+[![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/65f1ea2c7dcc20a1f798ae20c43c1b3df9bd167b/vvvv.png)
 
 I highlighted the key correlation fields — agent name, source IP, and source user — to make the pivot points clear.
 
