@@ -39,7 +39,7 @@ I confirmed the SSH service was active on the target and captured a baseline of 
 
 A small wordlist (`Password.txt`) was created on the attacker VM with three candidate passwords, to keep the simulation controlled and the resulting logs easy to read.
 
-[![image alt](screenshots/03-password-wordlist.png)](screenshots/03-password-wordlist.png)
+![image alt](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/11361e249cb19a58e9d07d95c1566a3f2e3f901f/password.png)
 
 ---
 
