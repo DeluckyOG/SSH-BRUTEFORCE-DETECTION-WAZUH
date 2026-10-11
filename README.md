@@ -160,7 +160,7 @@ The endpoint log and Wazuh alert support the conclusion that an SSH attempt was 
 
 ### Recommended next steps
 
-1. Verify the test VM IP and network mode, then correlate the source with endpoint logs.
+1. For a follow-up experiment, run Hydra from a separate, authorized lab VM if you want to demonstrate distinct attacker-to-target IP attribution; document that as a separate test.
 2. Review surrounding SSH events to establish the number and pattern of distinct failures.
 3. In the isolated lab, run a separate controlled test against a known local test account if permitted, and document whether a repeated-failure correlation rule actually triggers.
 4. Consider SSH key-based authentication, limiting SSH exposure, and rate-limiting protections such as Fail2ban.
