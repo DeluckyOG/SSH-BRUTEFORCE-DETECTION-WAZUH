@@ -13,6 +13,7 @@
 | Endpoint IP in alert | `192.168.89.130` |
 | Wazuh manager/dashboard | `192.168.89.128` (lab address) |
 | Service | OpenSSH (`sshd`) |
+| Where Hydra ran | On the same Ubuntu machine that hosted the SSH service |
 | Test username | `badguy` (non-existent user) |
 | Alert | Rule `5710`, level `5` |
 | Outcome | Failed authentication detected; no compromise shown |
@@ -33,7 +34,7 @@ I checked the SSH service, prepared a small wordlist containing three dummy cand
 
 ## 3. Simulation and endpoint validation
 
-The test used the username `badguy`, which does not exist on the endpoint. Hydra reported **0 of 1 valid passwords found**, as expected for that username. I then checked the endpoint's SSH authentication logs for invalid-user and failed-password entries.
+The test was run locally: **I ran Hydra on the same Ubuntu machine that was hosting the SSH service**, rather than from a separate attacker VM. Hydra targeted that machine's SSH service at `192.168.89.130`, using the non-existent username `badguy` and a small dummy password list. Hydra reported **0 of 1 valid passwords found**, which was expected because `badguy` is not a real account. I then checked the same machine's SSH authentication logs for invalid-user and failed-password entries.
 
 ![SSH authentication-failure log](https://github.com/DeluckyOG/SSH-BRUTEFORCE-DETECTION-WAZUH/blob/c72309f7c8fd9151b492e6dc6d9f1e61df18d502/brute%20force%20authentication%20failure.png)
 
@@ -114,11 +115,13 @@ This is a readable text transcription of the key fields from the Wazuh alert pro
 }
 ```
 
-## 6. Analyst interpretation and limitations
+## 6. Analyst interpretation and network context
 
-### Source-IP discrepancy
+### Why the source IP matches the agent IP
 
-The JSON reports `192.168.89.130` for both the monitored agent IP and the SSH event's source IP. This alert alone does **not** prove the connection originated from a separate attacker VM. The next step is to verify the testing VM's actual IP and network mode, then compare it with the endpoint's SSH logs before attributing the source.
+I ran Hydra **on the same Ubuntu machine that hosted the SSH target**. The Wazuh agent IP (`agent.ip`) and the source IP parsed from the SSH log (`data.srcip`) therefore both appear as `192.168.89.130` in this event. This is expected in the context of my same-host test; it is not evidence that I used a separate attacker VM. The raw log records the SSH attempt as coming from `192.168.89.130`, and the lab setup explains why the source and monitored endpoint address match.
+
+This was a **same-host SSH password-guessing simulation**. It should not be described as an attack launched from a separate machine.
 
 ### What the evidence does and does not establish
 
@@ -151,7 +154,7 @@ These are tags attached to the Wazuh rule. They do not certify that the lab or a
 
 **Verdict: Authentication-failure activity detected; no compromise demonstrated.**
 
-The endpoint log and Wazuh alert support the conclusion that an SSH attempt was made with the non-existent username `badguy`. Source-IP attribution remains unresolved and should be verified before identifying a separate attacker host.
+The endpoint log and Wazuh alert support the conclusion that an SSH attempt was made with the non-existent username `badguy`. I ran the simulation on the same Ubuntu machine that hosted SSH, which explains why the source IP and Wazuh agent IP both show `192.168.89.130`. This was a same-host test, not a simulation from a separate attacker VM.
 
 ### Recommended next steps
 
@@ -167,7 +170,7 @@ The endpoint log and Wazuh alert support the conclusion that an SSH attempt was 
 - Investigated an alert by pivoting from Wazuh Discover to its rule details and raw log.
 - Cross-checked SIEM evidence against endpoint logs.
 - Distinguished an invalid-user alert from proof of compromise or a separate brute-force correlation.
-- Identified a source-IP attribution gap instead of assuming the origin.
+- Explained why the SSH event's source IP matches the Wazuh agent IP in a same-host simulation.
 
 ---
 
