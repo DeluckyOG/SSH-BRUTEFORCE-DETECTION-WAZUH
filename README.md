@@ -1,5 +1,7 @@
 # SSH Password-Guessing Simulation & Wazuh Authentication-Failure Monitoring
 
+**Author:** Okechukwu Goodluck Chinemerem · [GitHub](https://github.com/DeluckyOG)
+
 **Portfolio case study | Blue Team / SOC L1 | Ubuntu | OpenSSH | Hydra | Wazuh**
 
 > **Result:** A controlled lab simulation produced SSH authentication-failure telemetry. Wazuh recorded a level-5 alert, rule **5710**, for an attempt using the non-existent username `badguy`. The event was reviewed using the alert fields and raw SSH log. No successful login or compromise was demonstrated.
